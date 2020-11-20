@@ -1,0 +1,7 @@
+.element__one {
+    grid-area: element__one;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 1;
+}

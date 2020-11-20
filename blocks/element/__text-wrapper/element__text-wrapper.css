@@ -1,0 +1,9 @@
+.element__text-wrapper {
+    background: #FFFFFF;
+    width: 282px;
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 25px;
+    padding-bottom: 31px;
+}
