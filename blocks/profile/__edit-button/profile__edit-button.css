@@ -4,3 +4,11 @@
     align-self: center;
     padding-left: 10px;
 }
+
+@media screen and (min-width: 1280px) {
+    .profile__edit-button {
+        width: 24px;
+        height: 24px;
+        padding-left: 25px;
+    }
+}
