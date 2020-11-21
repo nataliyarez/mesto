@@ -3,8 +3,16 @@
     height: 18px;
     align-self: center;
     padding-left: 10px;
+    background-image: url(../../../sprint-4-images/profile_pencil.png);
+    background-color: transparent;
+    border: none;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
+.profile__edit-button:hover {
+    cursor: pointer;
+}
 @media screen and (min-width: 1280px) {
     .profile__edit-button {
         width: 24px;
