@@ -13,5 +13,5 @@
 
 **GitHub**
 
-Мой проект доступен по ссылке [Ссылка на готовый проект](https://nataliyarez.github.io/russian-travel/)
+Мой проект доступен по ссылке [Ссылка на готовый проект](https://nataliyarez.github.io/mesto/index.html)
 
