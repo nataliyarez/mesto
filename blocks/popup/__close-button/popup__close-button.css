@@ -1,0 +1,26 @@
+.popup__close-button {
+    position: absolute;
+    right: 19px;
+    top: 73px;
+    background-image: url(../../../sprint-4-images/popup_Close_btn.png);
+    width: 26px;
+    height: 26px;
+    background-color: transparent;
+    border: none;
+    background-size: cover;
+    transition: transform ease-in-out 600ms;
+}
+.popup__close-button:hover {
+    cursor: pointer;
+    transform: rotate(45deg);
+    opacity: 0.6;
+}
+
+@media screen and (min-width: 1280px) {
+    .popup__close-button {
+        right: 380px;
+        top: 150px;
+        width: 40px;
+        height: 40px;
+    }
+}
