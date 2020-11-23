@@ -2,12 +2,15 @@
     width: 18px;
     height: 18px;
     align-self: center;
-    padding-left: 10px;
-    background-image: url(../../../sprint-4-images/profile_pencil.png);
+    margin-left: 10px;
+    background-image: url(../../../sprint-4-images/profile_pencil.svg);
+    background-size: 8px 8px;
     background-color: transparent;
-    border: none;
+    border:  1px solid #FFFFFF;
     background-position: center;
     background-repeat: no-repeat;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .profile__edit-button:hover {
@@ -17,6 +20,7 @@
     .profile__edit-button {
         width: 24px;
         height: 24px;
-        padding-left: 25px;
+        background-size: 10px 10px;
+        margin-left: 25px;
     }
 }
