@@ -1,7 +1,7 @@
-const profileeditbutton = document.querySelector('.profile__edit-button');
-const popup = document.querySelector('.popup');
-const popupCloseButton = document.querySelector('.popup__close-button');
-const formButton = document.querySelector('.form__button');
+let profileeditbutton = document.querySelector('.profile__edit-button');
+let popup = document.querySelector('.popup');
+let popupCloseButton = document.querySelector('.popup__close-button');
+let formButton = document.querySelector('.form__button');
 
 
 profileeditbutton.addEventListener('click', togglePopupVisibility);
@@ -11,17 +11,20 @@ function togglePopupVisibility() {
     popup.classList.toggle('popup_visible');
 }
 
-const formElement = document.querySelector('.form')
+let formElement = document.querySelector('.form');
 
 function formSubmitHandler (evt) {
     evt.preventDefault();
-    const nameInput = document.getElementById('name');
-    const jobInput = document.getElementById('job');
+    let nameInput = document.getElementById('name');
+    let jobInput = document.getElementById('job');
 
-    const nameElement = document.querySelector('.profile__title')
-    const jobElement = document.querySelector('.profile__subtitle')
-    nameElement.textContent=nameInput.value;
-    jobElement.textContent=jobInput.value;
+    let nameElement = document.querySelector('.profile__title');
+    let jobElement = document.querySelector('.profile__subtitle');
+    nameInput.value.textContent=nameElement;
+    console.log(nameElement);
+    //nameElement.textContent=nameInput.value;
+    console.log(nameInput.value);
+    //jobElement.textContent=jobInput.value;
     togglePopupVisibility();
 
 }
