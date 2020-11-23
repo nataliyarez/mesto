@@ -2,7 +2,7 @@
     width: 21px;
     height: 19px;
     align-self: center;
-    background-image: url(../../../sprint-4-images/elements_like.jpg);
+    background-image: url(../../../sprint-4-images/elements_like.svg);
     background-color: transparent;
     border: none;
     background-repeat: no-repeat;
@@ -16,7 +16,7 @@
 }
 
 .element__like:hover:active {
-    background-image: url(../../../sprint-4-images/elements_like_aktive.png);
+    background-image: url(../../../sprint-4-images/elements_like_aktive.svg);
 
 
 }
