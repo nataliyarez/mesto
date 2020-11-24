@@ -1,9 +1,3 @@
 .header {
-    border-bottom: 1px solid #545454;
-    height: 84px;
-}
-@media screen and (min-width: 1280px) {
-    .header {
-        height: 119px;
-    }
+    border-bottom: 1px solid rgba(84,84,84, 0.7);
 }
