@@ -2,71 +2,71 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="./pages/index.css" rel="stylesheet">
     <title>Место</title>
 </head>
 <body class="body">
 <div class="page">
     <header class="header">
-        <img class="header__logo" src="./images/header_logo.svg" alt="Лого">
+        <img alt="Лого" class="header__logo" src="./images/header_logo.svg">
     </header>
     <main class="content">
         <section class="profile">
-            <img class="profile__image" src="./images/profile_kusto.jpg" alt="аватар пользователя">
+            <img alt="аватар пользователя" class="profile__image" src="./images/profile_kusto.jpg">
             <div class="profile__info">
                 <div class="profile__title-wrapper">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
-                    <button class="profile__edit-button" type="button" aria-label="редактировать"></button>
+                    <button aria-label="редактировать" class="profile__edit-button" type="button"></button>
                 </div>
                 <p class="profile__subtitle">Исследователь океана</p>
             </div>
-            <button class="profile__add-button" type="button" aria-label="добавить"></button>
+            <button aria-label="добавить" class="profile__add-button" type="button"></button>
         </section>
         <section>
             <ul class="elements">
                 <li class="element">
-                    <img class="element__image" src="./images/elements_karachaevo.png"
-                         alt="Карачаево-Черкесия">
+                    <img alt="Карачаево-Черкесия" class="element__image"
+                         src="./images/elements_karachaevo.png">
                     <div class="element__text-wrapper">
                         <h3 class="element__text">Карачаево-Черкесия</h3>
-                        <button class="element__like" type="button" aria-label="сердечко"></button>
+                        <button aria-label="сердечко" class="element__like" type="button"></button>
                     </div>
                 </li>
                 <li class="element">
-                    <img class="element__image" src="./images/elements_elbrus.jpg" alt="Эльбрус">
+                    <img alt="Эльбрус" class="element__image" src="./images/elements_elbrus.jpg">
                     <div class="element__text-wrapper">
                         <h3 class="element__text">Гора Эльбрус</h3>
-                        <button class="element__like" type="button" aria-label="сердечко"></button>
+                        <button aria-label="сердечко" class="element__like" type="button"></button>
                     </div>
                 </li>
                 <li class="element">
-                    <img class="element__image" src="./images/elements_dombay.jpg" alt="Домбай">
+                    <img alt="Домбай" class="element__image" src="./images/elements_dombay.jpg">
                     <div class="element__text-wrapper">
                         <h3 class="element__text">Домбай</h3>
-                        <button class="element__like" type="button" aria-label="сердечко"></button>
+                        <button aria-label="сердечко" class="element__like" type="button"></button>
                     </div>
                 </li>
                 <li class="element">
-                    <img class="element__image" src="./images/elements_elbrus.jpg" alt="Эльбрус">
+                    <img alt="Эльбрус" class="element__image" src="./images/elements_elbrus.jpg">
                     <div class="element__text-wrapper">
                         <h3 class="element__text">Гора Эльбрус</h3>
-                        <button class="element__like" type="button" aria-label="сердечко"></button>
+                        <button aria-label="сердечко" class="element__like" type="button"></button>
                     </div>
                 </li>
                 <li class="element">
-                    <img class="element__image" src="./images/elements_dombay.jpg" alt="Домбай">
+                    <img alt="Домбай" class="element__image" src="./images/elements_dombay.jpg">
                     <div class="element__text-wrapper">
                         <h3 class="element__text">Домбай</h3>
-                        <button class="element__like" type="button" aria-label="сердечко"></button>
+                        <button aria-label="сердечко" class="element__like" type="button"></button>
                     </div>
                 </li>
                 <li class="element">
-                    <img class="element__image" src="./images/elements_karachaevo.png"
-                         alt="Карачаево-Черкесия">
+                    <img alt="Карачаево-Черкесия" class="element__image"
+                         src="./images/elements_karachaevo.png">
                     <div class="element__text-wrapper">
                         <h3 class="element__text">Карачаево-Черкесия</h3>
-                        <button class="element__like" type="button" aria-label="сердечко"></button>
+                        <button aria-label="сердечко" class="element__like" type="button"></button>
                     </div>
                 </li>
             </ul>
@@ -78,12 +78,12 @@
 </div>
 <div class="popup">
     <div class="popup__window">
-        <button class="popup__close-button" type="button" aria-label="закрыть"></button>
+        <button aria-label="закрыть" class="popup__close-button" type="button"></button>
         <h3 class="popup__text"> Редактировать профиль</h3>
         <form class="form" name="form__edit">
             <div class="form__input-wrapper">
-            <input type="text" class="form__input" name="name" id="name">
-            <input type="text" class="form__input" name="job" id="job">
+            <input class="form__input" id="name" name="name" type="text">
+            <input class="form__input" id="job" name="job" type="text">
             </div>
             <button class="form__button" type="submit">
                 Сохранить

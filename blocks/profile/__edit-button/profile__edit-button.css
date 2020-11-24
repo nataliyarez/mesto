@@ -11,6 +11,7 @@
     background-repeat: no-repeat;
     padding: 0;
     box-sizing: border-box;
+    transition: opacity ease 600ms;
 }
 
 .profile__edit-button:hover {

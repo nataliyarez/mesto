@@ -8,6 +8,7 @@
     background-repeat: no-repeat;
     box-sizing: content-box;
     outline: none;
+    transition: opacity ease 600ms;
 }
 
 .element__like:hover {
