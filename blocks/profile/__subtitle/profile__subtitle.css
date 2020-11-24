@@ -7,15 +7,17 @@
     color: #FFFFFF;
     margin: 0;
     padding-bottom: 36px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 282px;
 }
 
 @media screen and (min-width: 1280px) {
     .profile__subtitle {
-        font-style: normal;
-        font-weight: normal;
         font-size: 18px;
         line-height: 22px;
-        min-width: 100px;
+        width: 336px;
         text-align: start;
     }
 }

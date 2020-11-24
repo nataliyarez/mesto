@@ -2,7 +2,7 @@
     width: 21px;
     height: 19px;
     align-self: center;
-    background-image: url(../../../sprint-4-images/elements_like.svg);
+    background-image: url(../../../images/elements_like.svg);
     background-color: transparent;
     border: none;
     background-repeat: no-repeat;
@@ -12,11 +12,9 @@
 
 .element__like:hover {
     cursor: pointer;
-
+    opacity: 0.5;
 }
-
-.element__like:hover:active {
-    background-image: url(../../../sprint-4-images/elements_like_aktive.svg);
-
-
-}
+/*.element__like:hover:active {
+    /*background-image: url(../../../images/elements_like_aktive.svg);
+    background-color:inherit;
+}*/

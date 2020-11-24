@@ -9,64 +9,64 @@
 <body class="body">
 <div class="page">
     <header class="header">
-        <img class="header__logo" src="./sprint-4-images/header_logo.svg" alt="Лого">
+        <img class="header__logo" src="./images/header_logo.svg" alt="Лого">
     </header>
     <main class="content">
         <section class="profile">
-            <img class="profile__image" src="./sprint-4-images/profile_kusto.jpg" alt="Жак-Ив Кусто">
+            <img class="profile__image" src="./images/profile_kusto.jpg" alt="аватар пользователя">
             <div class="profile__info">
                 <div class="profile__title-wrapper">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
-                    <button class="profile__edit-button" type="button"></button>
+                    <button class="profile__edit-button" type="button" aria-label="редактировать"></button>
                 </div>
                 <p class="profile__subtitle">Исследователь океана</p>
             </div>
-            <button class="profile__add-button" type="button"></button>
+            <button class="profile__add-button" type="button" aria-label="добавить"></button>
         </section>
         <section>
             <ul class="elements">
                 <li class="element">
-                    <img class="element__image" src="./sprint-4-images/elements_karachaevo.png"
+                    <img class="element__image" src="./images/elements_karachaevo.png"
                          alt="Карачаево-Черкесия">
                     <div class="element__text-wrapper">
-                        <p class="element__text">Карачаево-Черкесия</p>
-                        <button class="element__like" type="button"></button>
+                        <h3 class="element__text">Карачаево-Черкесия</h3>
+                        <button class="element__like" type="button" aria-label="сердечко"></button>
                     </div>
                 </li>
                 <li class="element">
-                    <img class="element__image" src="./sprint-4-images/elements_elbrus.jpg" alt="Эльбрус">
+                    <img class="element__image" src="./images/elements_elbrus.jpg" alt="Эльбрус">
                     <div class="element__text-wrapper">
-                        <p class="element__text">Гора Эльбрус</p>
-                        <button class="element__like" type="button"></button>
+                        <h3 class="element__text">Гора Эльбрус</h3>
+                        <button class="element__like" type="button" aria-label="сердечко"></button>
                     </div>
                 </li>
                 <li class="element">
-                    <img class="element__image" src="./sprint-4-images/elements_dombay.jpg" alt="Домбай">
+                    <img class="element__image" src="./images/elements_dombay.jpg" alt="Домбай">
                     <div class="element__text-wrapper">
-                        <p class="element__text">Домбай</p>
-                        <button class="element__like" type="button"></button>
+                        <h3 class="element__text">Домбай</h3>
+                        <button class="element__like" type="button" aria-label="сердечко"></button>
                     </div>
                 </li>
                 <li class="element">
-                    <img class="element__image" src="./sprint-4-images/elements_elbrus.jpg" alt="Эльбрус">
+                    <img class="element__image" src="./images/elements_elbrus.jpg" alt="Эльбрус">
                     <div class="element__text-wrapper">
-                        <p class="element__text">Гора Эльбрус</p>
-                        <button class="element__like" type="button"></button>
+                        <h3 class="element__text">Гора Эльбрус</h3>
+                        <button class="element__like" type="button" aria-label="сердечко"></button>
                     </div>
                 </li>
                 <li class="element">
-                    <img class="element__image" src="./sprint-4-images/elements_dombay.jpg" alt="Домбай">
+                    <img class="element__image" src="./images/elements_dombay.jpg" alt="Домбай">
                     <div class="element__text-wrapper">
-                        <p class="element__text">Домбай</p>
-                        <button class="element__like" type="button"></button>
+                        <h3 class="element__text">Домбай</h3>
+                        <button class="element__like" type="button" aria-label="сердечко"></button>
                     </div>
                 </li>
                 <li class="element">
-                    <img class="element__image" src="./sprint-4-images/elements_karachaevo.png"
+                    <img class="element__image" src="./images/elements_karachaevo.png"
                          alt="Карачаево-Черкесия">
                     <div class="element__text-wrapper">
-                        <p class="element__text">Карачаево-Черкесия</p>
-                        <button class="element__like" type="button"></button>
+                        <h3 class="element__text">Карачаево-Черкесия</h3>
+                        <button class="element__like" type="button" aria-label="сердечко"></button>
                     </div>
                 </li>
             </ul>
@@ -78,9 +78,9 @@
 </div>
 <div class="popup">
     <div class="popup__window">
-        <button class="popup__close-button" type="button"></button>
-        <p class="popup__text"> Редактировать профиль</p>
-        <form class="form">
+        <button class="popup__close-button" type="button" aria-label="закрыть"></button>
+        <h3 class="popup__text"> Редактировать профиль</h3>
+        <form class="form" name="form__edit">
             <input type="text" class="form__input" name="name" id="name">
             <input type="text" class="form__input" name="job" id="job">
             <button class="form__button" type="submit">
