@@ -1,14 +1,17 @@
 .form__input {
-    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
-    line-height: 30px;
+    line-height: 17px;
     width: 234px;
     color: #000000;
     border-right-style: none;
     border-top-style: none;
     border-left-style: none;
     border-bottom: 1px solid rgba(0,0,0, 0.2);
-    margin-bottom: 17px;
+    margin-bottom: 30px;
+    padding-bottom: 13px;
+}
+.form__input:last-child {
+    margin-bottom: 0;
 }
