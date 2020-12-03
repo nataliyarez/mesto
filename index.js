@@ -1,14 +1,24 @@
-let profileeditbutton = document.querySelector('.profile__edit-button');
-let popup = document.querySelector('.popup');
-let popupCloseButton = document.querySelector('.popup__close-button');
+const profileeditbutton = document.querySelector('.profile__edit-button');
+const addCardButton = document.querySelector('.button_type_add-card')
+const popup = document.querySelector('.popup');
+const popupCard = document.querySelector('.popup_card');
+const popupCloseButton = document.querySelector('.popup__close-button');
+const popupCardCloseButton = document.querySelector('.popup__close-button_card');
 
 
-let nameInput = document.getElementById('name');
-let jobInput = document.getElementById('job');
+const nameInput = document.getElementById('name');
+const jobInput = document.getElementById('job');
 
-let nameElement = document.querySelector('.profile__title');
-let jobElement = document.querySelector('.profile__subtitle');
+const nameElement = document.querySelector('.profile__title');
+const jobElement = document.querySelector('.profile__subtitle');
 
+function assignCardValueInput () {
+    popupCard.classList.add('popup_visible');
+}
+
+function togglePopupCardVisibility () {
+    popupCard.classList.toggle('popup_visible');
+}
 
 function assignValueInput() {
     nameInput.value = nameElement.textContent;
@@ -32,4 +42,6 @@ function formSubmitHandler(evt) {
 
 formElement.addEventListener('submit', formSubmitHandler);
 profileeditbutton.addEventListener('click', assignValueInput);
+addCardButton.addEventListener('click', assignCardValueInput);
 popupCloseButton.addEventListener('click', togglePopupVisibility);
+popupCardCloseButton.addEventListener('click', togglePopupCardVisibility);

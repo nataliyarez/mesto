@@ -21,7 +21,7 @@
                 </div>
                 <p class="profile__subtitle">Исследователь океана</p>
             </div>
-            <button aria-label="добавить" class="profile__add-button" type="button"></button>
+            <button aria-label="добавить" class="button_type_add-card" type="button"></button>
         </section>
         <section>
             <ul class="elements">
@@ -90,6 +90,21 @@
             <div class="form__input-wrapper">
             <input class="form__input" id="name" name="name" type="text">
             <input class="form__input" id="job" name="job" type="text">
+            </div>
+            <button class="form__button" type="submit">
+                Сохранить
+            </button>
+        </form>
+    </div>
+</div>
+<div class="popup popup_card">
+    <div class="popup__window">
+        <button aria-label="закрыть" class="popup__close-button popup__close-button_card" type="button"></button>
+        <h3 class="popup__text"> Новое место</h3>
+        <form class="form" name="form__edit">
+            <div class="form__input-wrapper">
+                <input class="form__input form__input_card" value="Название" id="title" name="title" type="text">
+                <input class="form__input form__input_card" value="Ссылка на картинку" id="image" name="image" type="url">
             </div>
             <button class="form__button" type="submit">
                 Сохранить
