@@ -25,7 +25,18 @@
         </section>
         <section>
             <ul class="elements">
+                <template id="card-template">
                 <li class="element">
+                    <img alt="" class="element__image" id="1"
+                         src="">
+                    <button aria-label="корзина" class="button_type_basket" type="button"></button>
+                    <div class="element__text-wrapper">
+                        <h3 class="element__text"></h3>
+                        <button aria-label="сердечко" class="element__like" type="button"></button>
+                    </div>
+                </li>
+                </template>
+              <!--  <li class="element">
                     <img alt="Карачаево-Черкесия" class="element__image"
                          src="./images/elements_karachaevo.png">
                     <button aria-label="корзина" class="button_type_basket" type="button"></button>
@@ -75,7 +86,7 @@
                         <button aria-label="сердечко" class="element__like" type="button"></button>
                     </div>
                 </li>
-            </ul>
+            </ul> -->
         </section>
     </main>
     <footer class="footer">
@@ -101,10 +112,10 @@
     <div class="popup__window">
         <button aria-label="закрыть" class="popup__close-button popup__close-button_card" type="button"></button>
         <h3 class="popup__text"> Новое место</h3>
-        <form class="form" name="form__edit">
+        <form class="form form_card" name="form__edit">
             <div class="form__input-wrapper">
-                <input class="form__input form__input_card" value="Название" id="title" name="title" type="text">
-                <input class="form__input form__input_card" value="Ссылка на картинку" id="image" name="image" type="url">
+                <input class="form__input form__input_card" placeholder="Название" id="title" name="title" type="text">
+                <input class="form__input form__input_card" placeholder="Ссылка на картинку" id="image" name="image" type="url">
             </div>
             <button class="form__button" type="submit">
                 Сохранить
