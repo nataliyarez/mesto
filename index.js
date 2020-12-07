@@ -2,8 +2,10 @@ const profileeditbutton = document.querySelector('.profile__edit-button');
 const addCardButton = document.querySelector('.button_type_add-card')
 const popup = document.querySelector('.popup');
 const popupCard = document.querySelector('.popup_card');
+const popupImage = document.querySelector('.popup_image');
 const popupCloseButton = document.querySelector('.popup__close-button');
 const popupCardCloseButton = document.querySelector('.popup__close-button_card');
+const popupImageCloseButton = document.querySelector('.popup__close-button_image');
 const cardContainer = document.querySelector('.elements');
 const cardText = document.querySelector('.element__text');
 const formElement = document.querySelector('.form');
@@ -63,10 +65,11 @@ function addCard (imageValue, textValue) { // добавляем карточк�
     basketButton.addEventListener('click', removeCard);
     const likeButton = cardElemtnt.querySelector(`.element__like`);
     likeButton.addEventListener('click', likeCard);
+    const image = cardElemtnt.querySelector(`.element__image`);
+    image.addEventListener('click', OpenImage);
     //cardContainer.append(cardElemtnt);
 
     cardContainer.prepend(cardElemtnt);
-
 
 }
 
@@ -82,12 +85,17 @@ function removeCard () { // удаление карточек
     oneCard.remove();
 }
 
- function likeCard () {
+ function likeCard () {//переключаем класс лайк на анлайк
     //this.style.backgroundImage = "url('./images/elements_like_aktive.svg')";
      this.classList.toggle('element__like_active');
-     console.log('hj');
 }
 
+function OpenImage () {// открытие попапа с фото
+    document.getElementById('2').src = this.src;
+    document.getElementById('2').alt = this.alt;
+    document.querySelector('.popup__title').textContent = this.alt;
+    popupImage.classList.add('popup_visible');
+}
 
 function assignCardValueInput () { // делаем видимым попап с карточками
     popupCard.classList.add('popup_visible');
@@ -97,6 +105,9 @@ function togglePopupCardVisibility () { // делаем не видимым по
     popupCard.classList.toggle('popup_visible');
 }
 
+function togglePopupImageVisibility () { // делаем не видимым попап с ФОТО
+    popupImage.classList.toggle('popup_visible');
+}
 function assignValueInput() { // забираем контент со страницы в попап длаем попап видимым
     nameInput.value = nameElement.textContent;
     jobInput.value = jobElement.textContent;
@@ -123,4 +134,4 @@ profileeditbutton.addEventListener('click', assignValueInput);
 addCardButton.addEventListener('click', assignCardValueInput);
 popupCloseButton.addEventListener('click', togglePopupVisibility);
 popupCardCloseButton.addEventListener('click', togglePopupCardVisibility);
-//basketButton.addEventListener('click', removeCard);
+popupImageCloseButton.addEventListener('click', togglePopupImageVisibility);
