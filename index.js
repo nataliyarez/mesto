@@ -52,15 +52,16 @@ const imageElement = document.querySelector('.element__image');
 const textElement = document.querySelector('.element__text');
 
 initialCards.forEach(function (item) { // проходим массив с карточками
-addCard(item.link, item.name)
+    const card = createCard(item.link, item.name)
+    addCard(card);
 });
 
-function addCard (imageValue, textValue) { // добавляем карточки
+function createCard (imageValue, textValue) { // добавляем карточки
     const cardTemplate = document.querySelector('#card-template').content;
     const cardElemtnt = cardTemplate.cloneNode(true);
-    cardElemtnt.getElementById('1').src = imageValue;
+    cardElemtnt.getElementById('image_card').src = imageValue;
     cardElemtnt.querySelector('.element__text').textContent = textValue;
-    cardElemtnt.getElementById('1').alt= textValue;
+    cardElemtnt.getElementById('image_card').alt= textValue;
     const basketButton = cardElemtnt.querySelector(`.button_type_basket`);
     basketButton.addEventListener('click', removeCard);
     const likeButton = cardElemtnt.querySelector(`.element__like`);
@@ -69,13 +70,22 @@ function addCard (imageValue, textValue) { // добавляем карточк�
     image.addEventListener('click', OpenImage);
     //cardContainer.append(cardElemtnt);
 
-    cardContainer.prepend(cardElemtnt);
+   // cardContainer.prepend(cardElemtnt);
+    //addCard(cardElemtnt);
+   // console.log(cardElemtnt);
+    return cardElemtnt;
 
+}
+
+function addCard (card) {
+   cardContainer.prepend(card);
 }
 
 function formCardSubmit (evt) { // добавление новой карточки через кнопку
     evt.preventDefault();
-    addCard(imageInput.value,titleInput.value);
+    createCard(imageInput.value,titleInput.value);
+    const card = createCard(imageInput.value, titleInput.value)
+    addCard(card);
     togglePopupCardVisibility ();
 }
 
