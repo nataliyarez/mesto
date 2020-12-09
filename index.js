@@ -56,7 +56,7 @@ initialCards.forEach(function (item) { // проходим массив с ка�
     addCard(card);
 });
 
-function createCard (imageValue, textValue) { // добавляем карточки
+function createCard (imageValue, textValue) { // создаем карточки
     const cardTemplate = document.querySelector('#card-template').content;
     const cardElemtnt = cardTemplate.cloneNode(true);
     cardElemtnt.getElementById('image_card').src = imageValue;
@@ -77,7 +77,7 @@ function createCard (imageValue, textValue) { // добавляем карточ
 
 }
 
-function addCard (card) {
+function addCard (card) { // добавляем карточки
    cardContainer.prepend(card);
 }
 
@@ -86,7 +86,7 @@ function formCardSubmit (evt) { // добавление новой карточ�
     createCard(imageInput.value,titleInput.value);
     const card = createCard(imageInput.value, titleInput.value)
     addCard(card);
-    togglePopupCardVisibility ();
+    removePopupVisibility(popupCard);
 }
 
 function removeCard () { // удаление карточек
@@ -101,47 +101,47 @@ function removeCard () { // удаление карточек
 }
 
 function OpenImage () {// открытие попапа с фото
-    document.getElementById('2').src = this.src;
-    document.getElementById('2').alt = this.alt;
+    document.getElementById('image_popup').src = this.src;
+    document.getElementById('image_popup').alt = this.alt;
     document.querySelector('.popup__title').textContent = this.alt;
-    popupImage.classList.add('popup_visible');
+   // popupImage.classList.add('popup_visible');
+    showPopup (popupImage);
 }
 
-function assignCardValueInput () { // делаем видимым попап с карточками
-    popupCard.classList.add('popup_visible');
+function showPopup(popup) { // делаем попап видимым
+   popup.classList.add('popup_visible');
 }
 
-function togglePopupCardVisibility () { // делаем не видимым попап с карточками
-    popupCard.classList.toggle('popup_visible');
-}
-
-function togglePopupImageVisibility () { // делаем не видимым попап с ФОТО
-    popupImage.classList.toggle('popup_visible');
-}
-function assignValueInput() { // забираем контент со страницы в попап длаем попап видимым
+function updatePopupData (){ // забираем контент со страницы в попап длаем попап видимым
     nameInput.value = nameElement.textContent;
     jobInput.value = jobElement.textContent;
-    popup.classList.add('popup_visible');
-
+    showPopup (popup);
 }
 
-function togglePopupVisibility() { //  длаем попап не видимым
-    popup.classList.toggle('popup_visible');
+function removePopupVisibility(popup) {
+    popup.classList.remove('popup_visible');
 }
-
-
 
 function formSubmitHandler(evt) { // добовляем значения из попапа на страницу закрываем попап
     evt.preventDefault();
     nameElement.textContent = nameInput.value;
     jobElement.textContent = jobInput.value;
-    togglePopupVisibility();
+    removePopupVisibility(popup);
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
 formCardElement.addEventListener('submit', formCardSubmit);
-profileeditbutton.addEventListener('click', assignValueInput);
-addCardButton.addEventListener('click', assignCardValueInput);
-popupCloseButton.addEventListener('click', togglePopupVisibility);
-popupCardCloseButton.addEventListener('click', togglePopupCardVisibility);
-popupImageCloseButton.addEventListener('click', togglePopupImageVisibility);
+profileeditbutton.addEventListener('click', updatePopupData);
+addCardButton.addEventListener('click', () => {showPopup (popupCard)});
+popupCloseButton.addEventListener('click', () => {
+    removePopupVisibility(popup)
+});
+
+popupCardCloseButton.addEventListener('click', () => {
+    removePopupVisibility(popupCard)
+});
+
+popupImageCloseButton.addEventListener('click', () => {
+    removePopupVisibility(popupImage)
+});
+
