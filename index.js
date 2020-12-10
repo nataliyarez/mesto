@@ -58,22 +58,18 @@ initialCards.forEach(function (item) { // проходим массив с ка�
 
 function createCard (imageValue, textValue) { // создаем карточки
     const cardTemplate = document.querySelector('#card-template').content;
-    const cardElemtnt = cardTemplate.cloneNode(true);
-    cardElemtnt.getElementById('image_card').src = imageValue;
-    cardElemtnt.querySelector('.element__text').textContent = textValue;
-    cardElemtnt.getElementById('image_card').alt= textValue;
-    const basketButton = cardElemtnt.querySelector(`.button_type_basket`);
+    const cardElement = cardTemplate.cloneNode(true);
+    cardElement.getElementById('image_card').src = imageValue;
+    cardElement.querySelector('.element__text').textContent = textValue;
+    cardElement.getElementById('image_card').alt= textValue;
+    const basketButton = cardElement.querySelector(`.button_type_basket`);
     basketButton.addEventListener('click', removeCard);
-    const likeButton = cardElemtnt.querySelector(`.element__like`);
+    const likeButton = cardElement.querySelector(`.element__like`);
     likeButton.addEventListener('click', likeCard);
-    const image = cardElemtnt.querySelector(`.element__image`);
-    image.addEventListener('click', OpenImage);
-    //cardContainer.append(cardElemtnt);
+    const image = cardElement.querySelector(`.element__image`);
+    image.addEventListener('click', openImage);
 
-   // cardContainer.prepend(cardElemtnt);
-    //addCard(cardElemtnt);
-   // console.log(cardElemtnt);
-    return cardElemtnt;
+    return cardElement;
 
 }
 
@@ -83,7 +79,6 @@ function addCard (card) { // добавляем карточки
 
 function formCardSubmit (evt) { // добавление новой карточки через кнопку
     evt.preventDefault();
-    createCard(imageInput.value,titleInput.value);
     const card = createCard(imageInput.value, titleInput.value)
     addCard(card);
     removePopupVisibility(popupCard);
@@ -96,11 +91,10 @@ function removeCard () { // удаление карточек
 }
 
  function likeCard () {//переключаем класс лайк на анлайк
-    //this.style.backgroundImage = "url('./images/elements_like_aktive.svg')";
-     this.classList.toggle('element__like_active');
+    this.classList.toggle('element__like_active');
 }
 
-function OpenImage () {// открытие попапа с фото
+function openImage () {// открытие попапа с фото
     document.getElementById('image_popup').src = this.src;
     document.getElementById('image_popup').alt = this.alt;
     document.querySelector('.popup__title').textContent = this.alt;
