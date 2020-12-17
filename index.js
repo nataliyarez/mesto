@@ -1,5 +1,6 @@
 const profileeditbutton = document.querySelector('.profile__edit-button');
 const addCardButton = document.querySelector('.button_type_add-card')
+const popups = document.querySelectorAll('.popup');
 const popup = document.querySelector('.popup');
 const popupCard = document.querySelector('.popup_card');
 const popupImage = document.querySelector('.popup_image');
@@ -10,6 +11,7 @@ const cardContainer = document.querySelector('.elements');
 const cardText = document.querySelector('.element__text');
 const formElement = document.querySelector('.form');
 const formCardElement = document.querySelector('.form_card');
+let currentPopup;
 
 const initialCards = [
     {
@@ -38,6 +40,7 @@ const initialCards = [
     }
 ];
 
+const test = [popup, popupCard, popupImage];
 
 const nameInput = document.getElementById('name');
 const jobInput = document.getElementById('job');
@@ -104,6 +107,8 @@ function openImage () {// открытие попапа с фото
 
 function showPopup(popup) { // делаем попап видимым
    popup.classList.add('popup_visible');
+    currentPopup = popup;
+    document.addEventListener('keydown', keyHandler );
 }
 
 function updatePopupData (){ // забираем контент со страницы в попап длаем попап видимым
@@ -114,6 +119,7 @@ function updatePopupData (){ // забираем контент со стран�
 
 function removePopupVisibility(popup) {
     popup.classList.remove('popup_visible');
+    document.removeEventListener('keydown', keyHandler );
 }
 
 function formSubmitHandler(evt) { // добовляем значения из попапа на страницу закрываем попап
@@ -122,6 +128,12 @@ function formSubmitHandler(evt) { // добовляем значения из п
     jobElement.textContent = jobInput.value;
     removePopupVisibility(popup);
 }
+function keyHandler(evt) {
+    if (evt.key === 'Escape') removePopupVisibility(currentPopup);
+
+}
+
+
 
 formElement.addEventListener('submit', formSubmitHandler);
 formCardElement.addEventListener('submit', formCardSubmit);
@@ -138,4 +150,21 @@ popupCardCloseButton.addEventListener('click', () => {
 popupImageCloseButton.addEventListener('click', () => {
     removePopupVisibility(popupImage)
 });
+//popup.addEventListener('click', () => {removePopupVisibility(popup)});
+//popupCard.addEventListener('click', () => {removePopupVisibility(popupCard)});
+//popupImage.addEventListener('click', () => {removePopupVisibility(popupImage)});
 
+//document.addEventListener('keydown', keyHandler );
+
+//document.addEventListener('keydown',(evt) => {
+   // console.log(evt)
+    //if (evt.key === 'Escape') removePopupVisibility(popupImage);
+//})
+
+popups.forEach ((item) => {// закрытие попаов на оверлей
+    item.addEventListener('click', function (evt) {
+        if (evt.target === this) {
+            evt.target.classList.toggle('popup_visible');
+        }
+    });
+});
