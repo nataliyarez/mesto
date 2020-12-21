@@ -36,10 +36,12 @@
     <div class="popup__window">
         <button aria-label="закрыть" class="popup__close-button" type="button"></button>
         <h3 class="popup__text"> Редактировать профиль</h3>
-        <form class="form" name="form__edit">
+        <form class="form" name="form__edit" novalidate>
             <div class="form__input-wrapper">
-                <input class="form__input" id="name" name="name" type="text">
-                <input class="form__input" id="job" name="job" type="text">
+                <input class="form__input" id="name" name="name" type="text" required minlength="7" maxlength="40">
+                <span id="name-error" class="error"></span>
+                <input class="form__input" id="job" name="job" type="text" required minlength="7" maxlength="200">
+                <span id="job-error" class="error"></span>
             </div>
             <button class="form__button" type="submit">
                 Сохранить
@@ -51,11 +53,14 @@
     <div class="popup__window">
         <button aria-label="закрыть" class="popup__close-button popup__close-button_card" type="button"></button>
         <h3 class="popup__text"> Новое место</h3>
-        <form class="form form_card" name="form__edit">
+        <form class="form form_card" name="form__edit" novalidate>
             <div class="form__input-wrapper">
-                <input class="form__input form__input_card" id="title" name="title" placeholder="Название" type="text">
+                <input class="form__input form__input_card" id="title" name="title" placeholder="Название" type="text"
+                       minlength="2" maxlength="30" required>
+                <span id="title-error" class="error"></span>
                 <input class="form__input form__input_card" id="image" name="image" placeholder="Ссылка на картинку"
-                       type="url">
+                       required type="url">
+                <span id="image-error" class="error"></span>
             </div>
             <button class="form__button" type="submit">
                 Сохранить
@@ -83,5 +88,6 @@
     </li>
 </template>
 <script src="./index.js"></script>
+<script src="./validate.js"></script>
 </body>
 </html>

@@ -9,11 +9,11 @@
     border-top-style: none;
     border-left-style: none;
     border-bottom: 1px solid rgba(0,0,0, 0.2);
-    margin-bottom: 30px;
+    margin-bottom: 5px;
     padding-bottom: 13px;
 }
 .form__input:last-child {
-    margin-bottom: 0;
+    margin-bottom: 0px;
 }
 
 @media screen and (min-width: 1280px) {

@@ -7,6 +7,7 @@ const popupImage = document.querySelector('.popup_image');
 const popupCloseButton = document.querySelector('.popup__close-button');
 const popupCardCloseButton = document.querySelector('.popup__close-button_card');
 const popupImageCloseButton = document.querySelector('.popup__close-button_image');
+const formButton = document.querySelector('.form__button');
 const cardContainer = document.querySelector('.elements');
 const cardText = document.querySelector('.element__text');
 const formElement = document.querySelector('.form');
@@ -40,7 +41,6 @@ const initialCards = [
     }
 ];
 
-const test = [popup, popupCard, popupImage];
 
 const nameInput = document.getElementById('name');
 const jobInput = document.getElementById('job');
@@ -114,6 +114,7 @@ function showPopup(popup) { // делаем попап видимым
 function updatePopupData (){ // забираем контент со страницы в попап длаем попап видимым
     nameInput.value = nameElement.textContent;
     jobInput.value = jobElement.textContent;
+    setButtonState(formButton, formElement.checkValidity(), obj);
     showPopup (popup);
 }
 

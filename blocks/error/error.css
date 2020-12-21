@@ -1,0 +1,12 @@
+.error {
+    font-size: 12px;
+    line-height: 15px;
+    color: #FF0000;
+    font-family: 'Inter', Arial, sans-serif;
+    margin-bottom: 13px;
+    height: 25px;
+}
+
+.error:last-child {
+    margin-bottom: 0;
+}
