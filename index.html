@@ -53,7 +53,7 @@
     <div class="popup__window">
         <button aria-label="закрыть" class="popup__close-button popup__close-button_card" type="button"></button>
         <h3 class="popup__text"> Новое место</h3>
-        <form class="form form_card" name="form__edit" novalidate>
+        <form class="form form_card" name="form__card" novalidate>
             <div class="form__input-wrapper">
                 <input class="form__input form__input_card" id="title" name="title" placeholder="Название" type="text"
                        minlength="2" maxlength="30" required>
@@ -62,7 +62,7 @@
                        required type="url">
                 <span id="image-error" class="error"></span>
             </div>
-            <button class="form__button" type="submit">
+            <button class="form__button form__button_card" type="submit">
                 Сохранить
             </button>
         </form>

@@ -8,10 +8,12 @@ const popupCloseButton = document.querySelector('.popup__close-button');
 const popupCardCloseButton = document.querySelector('.popup__close-button_card');
 const popupImageCloseButton = document.querySelector('.popup__close-button_image');
 const formButton = document.querySelector('.form__button');
+const formButtonCad = document.querySelector('.form__button_card');
 const cardContainer = document.querySelector('.elements');
 const cardText = document.querySelector('.element__text');
 const formElement = document.querySelector('.form');
 const formCardElement = document.querySelector('.form_card');
+const form = document.forms.form__card;
 let currentPopup;
 
 const initialCards = [
@@ -62,9 +64,10 @@ initialCards.forEach(function (item) { // проходим массив с ка�
 function createCard (imageValue, textValue) { // создаем карточки
     const cardTemplate = document.querySelector('#card-template').content;
     const cardElement = cardTemplate.cloneNode(true);
-    cardElement.getElementById('image_card').src = imageValue;
+    const cardImage = cardElement.getElementById('image_card');
+    cardImage.src = imageValue;
     cardElement.querySelector('.element__text').textContent = textValue;
-    cardElement.getElementById('image_card').alt= textValue;
+    cardImage.alt= textValue;
     const basketButton = cardElement.querySelector(`.button_type_basket`);
     basketButton.addEventListener('click', removeCard);
     const likeButton = cardElement.querySelector(`.element__like`);
@@ -84,6 +87,7 @@ function formCardSubmit (evt) { // добавление новой карточ�
     evt.preventDefault();
     const card = createCard(imageInput.value, titleInput.value)
     addCard(card);
+    form.reset();
     removePopupVisibility(popupCard);
 }
 
@@ -98,27 +102,31 @@ function removeCard () { // удаление карточек
 }
 
 function openImage () {// открытие попапа с фото
-    document.getElementById('image_popup').src = this.src;
-    document.getElementById('image_popup').alt = this.alt;
+    const popupPhoto = document.getElementById('image_popup');
+    popupPhoto.src = this.src;
+    popupPhoto.alt = this.alt;
     document.querySelector('.popup__title').textContent = this.alt;
    // popupImage.classList.add('popup_visible');
     showPopup (popupImage);
 }
 
-function showPopup(popup) { // делаем попап видимым
+function showPopup(popup,button, form) { // делаем попап видимым
    popup.classList.add('popup_visible');
     currentPopup = popup;
     document.addEventListener('keydown', keyHandler );
+   if (form) {
+       setButtonState(button, form.checkValidity(), obj);
+   }
+
 }
 
 function updatePopupData (){ // забираем контент со страницы в попап длаем попап видимым
     nameInput.value = nameElement.textContent;
     jobInput.value = jobElement.textContent;
-    setButtonState(formButton, formElement.checkValidity(), obj);
-    showPopup (popup);
+    showPopup (popup, formButton, formElement);
 }
 
-function removePopupVisibility(popup) {
+function removePopupVisibility(popup) { // делаем попап не видимым
     popup.classList.remove('popup_visible');
     document.removeEventListener('keydown', keyHandler );
 }
@@ -139,7 +147,7 @@ function keyHandler(evt) {
 formElement.addEventListener('submit', formSubmitHandler);
 formCardElement.addEventListener('submit', formCardSubmit);
 profileeditbutton.addEventListener('click', updatePopupData);
-addCardButton.addEventListener('click', () => {showPopup (popupCard)});
+addCardButton.addEventListener('click', () => {showPopup (popupCard, formButtonCad, formCardElement)});
 popupCloseButton.addEventListener('click', () => {
     removePopupVisibility(popup)
 });
@@ -151,21 +159,12 @@ popupCardCloseButton.addEventListener('click', () => {
 popupImageCloseButton.addEventListener('click', () => {
     removePopupVisibility(popupImage)
 });
-//popup.addEventListener('click', () => {removePopupVisibility(popup)});
-//popupCard.addEventListener('click', () => {removePopupVisibility(popupCard)});
-//popupImage.addEventListener('click', () => {removePopupVisibility(popupImage)});
-
-//document.addEventListener('keydown', keyHandler );
-
-//document.addEventListener('keydown',(evt) => {
-   // console.log(evt)
-    //if (evt.key === 'Escape') removePopupVisibility(popupImage);
-//})
 
 popups.forEach ((item) => {// закрытие попаов на оверлей
     item.addEventListener('click', function (evt) {
         if (evt.target === this) {
-            evt.target.classList.toggle('popup_visible');
+           // evt.target.classList.toggle('popup_visible');
+            removePopupVisibility(this);
         }
     });
 });
