@@ -7,31 +7,31 @@ const obj = {
 };
 
 
-class Validation {
+class FormValidator {
 
-    constructor (obj,form) {
+    constructor(obj, form) {
         this.obj = obj;
         this.form = form;
 
     }
 
     enableValidation() {
-       // const formAll = document.querySelectorAll(obj.formSelector);
-      // formAll.forEach(form => {
-            this.setEventListeners(this.form, this.obj);
+
+        this._setEventListeners(this.form, this.obj);
         this.form.addEventListener('submit', function (evt) {
-                evt.preventDefault();
-            });
-            const submitButton = this.form.querySelector(obj.submitButtonSelector);
-            this.setButtonState(submitButton, this.form.checkValidity(), this.obj)
-        //})
+            evt.preventDefault();
+        });
+        const submitButton = this.form.querySelector(obj.submitButtonSelector);
+        this.setButtonState(submitButton, this.form.checkValidity(), this.obj)
+
     }
-     _showError = (form, input, obj) => {
+
+    _showError = (form, input, obj) => {
         const formError = this.form.querySelector(`#${input.id}-error`);
         input.classList.add(obj.inputErrorClass);
         formError.textContent = input.validationMessage;
     }
-    hideError = (form, input, obj) => {
+    _hideError = (form, input, obj) => {
         const formError = this.form.querySelector(`#${input.id}-error`);
         input.classList.remove(obj.inputErrorClass);
         formError.textContent = '';
@@ -42,7 +42,7 @@ class Validation {
             this._showError(this.form, input, this.obj);
 
         } else {
-            this.hideError(this.form, input, this.obj);
+            this._hideError(this.form, input, this.obj);
         }
     };
 
@@ -57,7 +57,7 @@ class Validation {
     }
 
 
-    setEventListeners(form, obj) {
+    _setEventListeners(form, obj) {
         const inputsList = this.form.querySelectorAll(this.obj.inputSelector);
         const submitButton = this.form.querySelector(this.obj.submitButtonSelector);
 
@@ -70,9 +70,13 @@ class Validation {
     }
 
 }
+
 const formAll = document.querySelectorAll(obj.formSelector);
 
 formAll.forEach(form => {
-    const validation = new Validation(obj,form);
+    const validation = new FormValidator(obj, form);
     validation.enableValidation();
 });
+
+
+export {FormValidator, obj};
