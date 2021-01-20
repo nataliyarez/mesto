@@ -1,82 +1,69 @@
-const obj = {
-    formSelector: '.form',
-    inputSelector: '.form__input',
-    submitButtonSelector: '.form__button',
-    inactiveButtonClass: 'form__button_disabled',
-    inputErrorClass: 'popup__input_type_error',
-};
-
+import { defaultFormConfig} from './index.js'
 
 class FormValidator {
 
-    constructor(obj, form) {
-        this.obj = obj;
+    constructor(configuration, form) {
+        this.configuration = configuration;
         this.form = form;
+        this._inputSelector = configuration.inputSelector;
+        this._submitButtonSelector = configuration.submitButtonSelector;
+        this._inactiveButtonClass = configuration.inactiveButtonClass;
+        this._inputErrorClass = configuration.inputErrorClass;
 
     }
 
     enableValidation() {
 
-        this._setEventListeners(this.form, this.obj);
+        this._setEventListeners();
         this.form.addEventListener('submit', function (evt) {
             evt.preventDefault();
         });
-        const submitButton = this.form.querySelector(obj.submitButtonSelector);
-        this.setButtonState(submitButton, this.form.checkValidity(), this.obj)
 
     }
 
-    _showError = (form, input, obj) => {
-        const formError = this.form.querySelector(`#${input.id}-error`);
-        input.classList.add(obj.inputErrorClass);
-        formError.textContent = input.validationMessage;
+    _showError = (inputElement) => {
+        const formError = this.form.querySelector(`#${inputElement.id}-error`);
+        inputElement.classList.add(this._inputErrorClass);
+        formError.textContent = inputElement.validationMessage;
     }
-    _hideError = (form, input, obj) => {
-        const formError = this.form.querySelector(`#${input.id}-error`);
-        input.classList.remove(obj.inputErrorClass);
+    _hideError = (inputElement) => {
+        const formError = this.form.querySelector(`#${inputElement.id}-error`);
+        inputElement.classList.remove(this._inputErrorClass);
         formError.textContent = '';
     };
 
-    _checkInputValidity = (form, input, obj) => {
-        if (!input.validity.valid) {
-            this._showError(this.form, input, this.obj);
+    _checkInputValidity = (inputElement) => {
+        if (!inputElement.validity.valid) {
+            this._showError(inputElement);
 
         } else {
-            this._hideError(this.form, input, this.obj);
+            this._hideError(inputElement);
         }
     };
 
-    setButtonState(button, isActive, obj) {
+    _toggleButtonState() {
+        let isActive = this.form.checkValidity();
         if (isActive) {
-            button.classList.remove(this.obj.inactiveButtonClass);
-            button.disabled = false;
+            this._submitButton.classList.remove(this._inactiveButtonClass);
+            this._submitButton.disabled = false;
         } else {
-            button.classList.add(this.obj.inactiveButtonClass);
-            button.disabled = true;
+            this._submitButton.classList.add(this._inactiveButtonClass);
+            this._submitButton.disabled = true;
         }
     }
 
 
-    _setEventListeners(form, obj) {
-        const inputsList = this.form.querySelectorAll(this.obj.inputSelector);
-        const submitButton = this.form.querySelector(this.obj.submitButtonSelector);
-
-        inputsList.forEach(input => {
-            input.addEventListener('input', () => {
-                this._checkInputValidity(this.form, input, this.obj);
-                this.setButtonState(submitButton, this.form.checkValidity(), this.obj)
+    _setEventListeners() {
+        this._inputsList = this.form.querySelectorAll(this._inputSelector);
+        this._submitButton = this.form.querySelector(this._submitButtonSelector);
+        this._inputsList .forEach(inputElement => {
+            inputElement.addEventListener('input', () => {
+                this._checkInputValidity(inputElement);
+                this._toggleButtonState();
             })
         })
     }
 
 }
 
-const formAll = document.querySelectorAll(obj.formSelector);
-
-formAll.forEach(form => {
-    const validation = new FormValidator(obj, form);
-    validation.enableValidation();
-});
-
-
-export {FormValidator, obj};
+export {FormValidator};

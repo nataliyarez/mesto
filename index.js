@@ -1,5 +1,5 @@
 import {Card, imageInput, titleInput} from './Card.js'
-import {FormValidator, obj} from './FormValidator.js'
+import {FormValidator} from './FormValidator.js'
 
 
 const profileeditbutton = document.querySelector('.profile__edit-button');
@@ -32,15 +32,36 @@ const jobElement = document.querySelector('.profile__subtitle');
 
 const imageElement = document.querySelector('.element__image');
 const textElement = document.querySelector('.element__text');
+const popupPhoto = document.getElementById('image_popup');
+const cardContainer = document.querySelector('.elements');
 
+// валиадация
+const defaultFormConfig  = {
+    formSelector: '.form',
+    inputSelector: '.form__input',
+    submitButtonSelector: '.form__button',
+    inactiveButtonClass: 'form__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+};
+
+const formAll = document.querySelectorAll(defaultFormConfig.formSelector);
+
+formAll.forEach(forms => {
+    const validation = new FormValidator(defaultFormConfig, forms);
+    validation.enableValidation();
+});
+
+// добавление карточки
 
 function formCardSubmit(evt) { // добавление новой карточки через кнопку
     evt.preventDefault();
-    const card = new Card(imageInput.value, titleInput.value);
+    const card = new Card(imageInput.value, titleInput.value, '.card-template');
     // addCard(card);
     const cardElement = card.generateCard();
+    cardContainer.prepend(cardElement);
     form.reset();
     removePopupVisibility(popupCard);
+
 }
 
 
@@ -49,8 +70,9 @@ function showPopup(popup, button, form) { // делаем попап видим�
     currentPopup = popup;
     document.addEventListener('keydown', keyHandler);
     if (form) {
-        const validation = new FormValidator(obj);
-        validation.setButtonState(button, form.checkValidity(), obj);
+        const validation = new FormValidator(defaultFormConfig, form);
+        validation.enableValidation();
+        validation._toggleButtonState();
     }
 
 }
@@ -77,6 +99,8 @@ function keyHandler(evt) {
     if (evt.key === 'Escape') removePopupVisibility(currentPopup);
 
 }
+
+
 
 formElement.addEventListener('submit', formSubmitHandler);
 formCardElement.addEventListener('submit', formCardSubmit);
@@ -106,4 +130,4 @@ popups.forEach((item) => {// закрытие попаов на оверлей
 });
 
 
-export {showPopup, removePopupVisibility, form, formCardElement, popupCard, popupImage};
+export {showPopup, removePopupVisibility, form, formCardElement, popupCard, popupImage, defaultFormConfig};
