@@ -1,4 +1,4 @@
-import { defaultFormConfig} from './index.js'
+import {defaultFormConfig} from './index.js'
 
 class FormValidator {
 
@@ -18,7 +18,7 @@ class FormValidator {
         this.form.addEventListener('submit', function (evt) {
             evt.preventDefault();
         });
-
+        this.toggleButtonState();
     }
 
     _showError = (inputElement) => {
@@ -41,7 +41,7 @@ class FormValidator {
         }
     };
 
-    _toggleButtonState() {
+    toggleButtonState() {
         let isActive = this.form.checkValidity();
         if (isActive) {
             this._submitButton.classList.remove(this._inactiveButtonClass);
@@ -56,10 +56,10 @@ class FormValidator {
     _setEventListeners() {
         this._inputsList = this.form.querySelectorAll(this._inputSelector);
         this._submitButton = this.form.querySelector(this._submitButtonSelector);
-        this._inputsList .forEach(inputElement => {
+        this._inputsList.forEach(inputElement => {
             inputElement.addEventListener('input', () => {
                 this._checkInputValidity(inputElement);
-                this._toggleButtonState();
+                this.toggleButtonState();
             })
         })
     }
