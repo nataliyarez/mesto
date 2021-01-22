@@ -1,9 +1,6 @@
-import {defaultFormConfig} from './index.js'
-
 class FormValidator {
 
     constructor(configuration, form) {
-        this.configuration = configuration;
         this.form = form;
         this._inputSelector = configuration.inputSelector;
         this._submitButtonSelector = configuration.submitButtonSelector;
@@ -42,8 +39,7 @@ class FormValidator {
     };
 
     toggleButtonState() {
-        let isActive = this.form.checkValidity();
-        if (isActive) {
+        if (this.form.checkValidity()) {
             this._submitButton.classList.remove(this._inactiveButtonClass);
             this._submitButton.disabled = false;
         } else {

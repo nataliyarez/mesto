@@ -12,6 +12,7 @@ class Card {
         const cardElement = document
             .querySelector(this._cardTemplate)
             .content
+            .querySelector('.element')
             .cloneNode(true);
 
 
@@ -20,10 +21,10 @@ class Card {
 
     _setEventListeners() {
         const basketButton = this._element.querySelector(`.button_type_basket`);
-        basketButton.addEventListener('click', this._removeCard);
+        basketButton.addEventListener('click', ()=>this._removeCard());
         this._element.querySelector('.element__like').addEventListener('click', this._handleLikeIcon);
         const image = this._element.querySelector(`.element__image`);
-        image.addEventListener('click', this._openImage.bind(this));
+        image.addEventListener('click', ()=>this._openImage());
 
     }
 
@@ -41,14 +42,12 @@ class Card {
     }
 
     _removeCard() { // удаление карточек
-        const oneCard = this.closest('.element');
-        oneCard.remove();
+        this._element.remove();
+        this._element = null;
     }
 
     _handleLikeIcon(evt) {//переключаем класс лайк на анлайк
-        if (evt.target === evt.currentTarget) {
-            evt.target.classList.toggle('element__like_active');
-        }
+        evt.target.classList.toggle('element__like_active');
 
     }
 

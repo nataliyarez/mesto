@@ -13,7 +13,7 @@ const popupCardCloseButton = document.querySelector('.popup__close-button_card')
 const popupImageCloseButton = document.querySelector('.popup__close-button_image');
 const formElement = document.querySelector('.form');
 const formCardElement = document.querySelector('.form_card');
-const form = document.forms.form__card;
+
 
 
 const nameInput = document.querySelector('#name');
@@ -80,7 +80,7 @@ function formCardSubmit(evt) { // добавление новой карточк
     const card = new Card(imageInput.value, titleInput.value, cardTemplate);
     const cardElement = card.generateCard();
     cardContainer.prepend(cardElement);
-    form.reset();
+    formCardElement.reset();
     addPopupValidation.toggleButtonState()
     removePopupVisibility(popupCard);
 
@@ -113,9 +113,8 @@ function formSubmitHandler(evt) { // добовляем значения из п
 
 function handleEscUp(evt) {
     if (evt.key === 'Escape') {
-        removePopupVisibility(popup);
-        removePopupVisibility(popupCard);
-        removePopupVisibility(popupImage);
+        const activePopup = document.querySelector('.popup_visible');
+        removePopupVisibility(activePopup);
     }
 
 }
@@ -154,4 +153,4 @@ editPopupValidation.enableValidation();
 const addPopupValidation = new FormValidator(defaultFormConfig, formCardElement);
 addPopupValidation.enableValidation();
 
-export {addPopupVisibility, popupImage, defaultFormConfig};
+export {addPopupVisibility, popupImage};
