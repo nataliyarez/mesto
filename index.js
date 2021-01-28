@@ -1,5 +1,6 @@
 import {Card} from './Card.js'
 import {FormValidator} from './FormValidator.js'
+import {Section} from './Section.js'
 
 
 const profileEditButton = document.querySelector('.profile__edit-button');
@@ -24,6 +25,7 @@ const nameElement = document.querySelector('.profile__title');
 const jobElement = document.querySelector('.profile__subtitle');
 
 //карточки
+const cardListSelector = '.elements';
 const titleInput = document.querySelector('#title');
 const imageInput = document.querySelector('#image');
 const cardContainer = document.querySelector('.elements');
@@ -67,26 +69,40 @@ const defaultFormConfig = {
 
 
 // добавление карточки
-initialCards.forEach((item) => {
-    const card = new Card(item.link, item.name, cardTemplate);
-    const cardElement = card.generateCard();
-    cardContainer.prepend(cardElement);
+//initialCards.forEach((item) => {
+   // const card = new Card(item.link, item.name, cardTemplate);
+  //  const cardElement = card.generateCard();
+   // cardContainer.prepend(cardElement);
 
-});
+//});
+ const cardList =new Section({ items:initialCards, renderer: (item) =>{
+        const card = new Card(item.link, item.name, cardTemplate);
+        return card.generateCard();
+    } }, cardListSelector);
 
+//c { // добавление новой карточки через кнопку
+    //evt.preventDefault();
+   // const card = new Card(imageInput.value, titleInput.value, cardTemplate);
+   // const cardElement = card.generateCard();
+   // cardContainer.prepend(cardElement);
+    //formCardElement.reset();
+    //addPopupValidation.toggleButtonState()
+    //removePopupVisibility(popupCard);
 
-function formCardSubmit(evt) { // добавление новой карточки через кнопку
+//}
+
+function formCardSubmit(evt) {
     evt.preventDefault();
     const card = new Card(imageInput.value, titleInput.value, cardTemplate);
     const cardElement = card.generateCard();
-    cardContainer.prepend(cardElement);
+    cardList.addItem(cardElement);
     formCardElement.reset();
     addPopupValidation.toggleButtonState()
     removePopupVisibility(popupCard);
-
 }
 
 
+// все что относиться к popup
 function addPopupVisibility(popup) { // делаем попап видимым
     popup.classList.add('popup_visible');
     document.addEventListener('keydown', handleEscUp);
