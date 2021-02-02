@@ -1,2 +1,4 @@
 .idea
 sprint-4-images/Thumbs.db
+node_modules
+dist

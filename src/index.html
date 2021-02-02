@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="./pages/index.css" rel="stylesheet">
     <title>Место</title>
 </head>
 <body class="body">
 <div class="page">
     <header class="header">
-        <img alt="Лого" class="header__logo" src="./images/header_logo.svg">
+        <img alt="Лого" class="header__logo" src="<%=require('./images/header_logo.svg')%>">
     </header>
     <main class="content">
         <section class="profile">
-            <img alt="аватар пользователя" class="profile__image" src="./images/profile_kusto.jpg">
+            <img alt="аватар пользователя" class="profile__image" src="<%=require('./images/profile_kusto.jpg')%>">
             <div class="profile__info">
                 <div class="profile__title-wrapper">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -76,7 +75,7 @@
         <h3 class="popup__title">Архыз</h3>
     </div>
 </div>
-<template class ="card-template" id="card-template">
+<template class="card-template" id="card-template">
     <li class="element">
         <img alt="Архыз" class="element__image" id="image_card"
              src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg">
@@ -87,6 +86,6 @@
         </div>
     </li>
 </template>
-<script type="module" src="./index.js"></script>
+
 </body>
 </html>

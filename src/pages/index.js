@@ -1,15 +1,36 @@
-import {Card} from './Card.js'
-import {FormValidator} from './FormValidator.js'
-import {Section} from './Section.js'
-import {PopupWithImage} from './PopupWithImage.js'
-import {PopupWithForm} from './PopupWithForm.js'
-import {UserInfo} from './UserInfo.js'
+import {Card} from '../components/Card.js'
+import {FormValidator} from '../components/FormValidator.js'
+import {Section} from '../components/Section.js'
+import {PopupWithImage} from '../components/PopupWithImage.js'
+import {PopupWithForm} from '../components/PopupWithForm.js'
+import {UserInfo} from '../components/UserInfo.js'
 
 const profileEditButton = document.querySelector('.profile__edit-button');
 const addCardButton = document.querySelector('.button_type_add-card')
 const formElement = document.querySelector('.form');
 const formCardElement = document.querySelector('.form_card');
+// картинки
+import headerLogo from '../images/header_logo.svg';
+import basket from '../images/elements_basket.svg';
+import like from '../images/elements_like.svg';
 
+import close_btn from '../images/popup_close_btn.svg';
+import kusto from '../images/profile_kusto.jpg';
+import pencil from '../images/profile_pencil.svg';
+import plus from '../images/profile_plus.svg';
+
+const whoIsTheGoat = [
+    // меняем исходные пути на переменные
+    { name: 'headerLogo', image: headerLogo },
+    { name: 'basket', image: basket },
+    { name: 'like', image: like },
+    { name: 'close_btn', image: close_btn },
+    { name: 'kusto', image: kusto },
+    { name: 'pencil', image: pencil },
+    { name: 'plus', image: plus },
+
+];
+import './index.css';
 
 //карточки
 const cardListSelector = '.elements';

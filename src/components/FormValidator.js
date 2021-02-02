@@ -17,12 +17,11 @@ class FormValidator {
         });
         this.toggleButtonState();
     }
-
     _showError = (inputElement) => {
         const formError = this.form.querySelector(`#${inputElement.id}-error`);
         inputElement.classList.add(this._inputErrorClass);
         formError.textContent = inputElement.validationMessage;
-    }
+    };
     _hideError = (inputElement) => {
         const formError = this.form.querySelector(`#${inputElement.id}-error`);
         inputElement.classList.remove(this._inputErrorClass);
