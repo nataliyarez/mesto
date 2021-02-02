@@ -6,16 +6,12 @@ class Section {
         this.renderItems();
     }
 
-    addItem(element) {
+    addItem(element) { // отрисовывает элементы
         this._container.prepend(element);
     }
 
-    clear() {
-        this._container.innerHTML = '';
-    }
 
-    renderItems() {
-        this.clear();
+    renderItems() { // принимает dom-элемент и добовляет в контейнер
 
         this._renderedItems.forEach(item => {
             this.addItem(this._renderer(item));

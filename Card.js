@@ -1,11 +1,10 @@
-import {addPopupVisibility, popupImage} from './index.js'
 
-
-class Card {
-    constructor(link, name, cardTemplate) {
+class Card  {
+    constructor(link, name, cardTemplate, handleCardClick) {
         this._link = link;
         this._name = name;
         this._cardTemplate = cardTemplate;
+        this.handleCardClick= handleCardClick;
     }
 
     _getTemplate() {
@@ -24,7 +23,7 @@ class Card {
         basketButton.addEventListener('click', ()=>this._removeCard());
         this._element.querySelector('.element__like').addEventListener('click', this._handleLikeIcon);
         const image = this._element.querySelector(`.element__image`);
-        image.addEventListener('click', ()=>this._openImage());
+        image.addEventListener('click', ()=>this.handleCardClick(this._link, this._name));
 
     }
 
@@ -36,7 +35,7 @@ class Card {
         this._element.querySelector('#image_card').src = this._link;
         this._element.querySelector('.element__text').textContent = this._name;
         this._element.querySelector('#image_card').alt = this._name;
-        this._photo = document.querySelector('#image_popup');
+
 
         return this._element;
     }
@@ -51,12 +50,6 @@ class Card {
 
     }
 
-    _openImage() {// открытие попапа с фото
-        this._photo.src = this._link;
-        this._photo.alt = this._name;
-        document.querySelector('.popup__title').textContent = this._name;
-        addPopupVisibility(popupImage);
-    }
 
 }
 
