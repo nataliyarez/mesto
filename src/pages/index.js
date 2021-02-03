@@ -9,6 +9,10 @@ const profileEditButton = document.querySelector('.profile__edit-button');
 const addCardButton = document.querySelector('.button_type_add-card')
 const formElement = document.querySelector('.form');
 const formCardElement = document.querySelector('.form_card');
+
+const nameInfo = document.querySelector('#name');
+const jobInfo = document.querySelector('#job');
+
 // картинки
 import headerLogo from '../images/header_logo.svg';
 import basket from '../images/elements_basket.svg';
@@ -19,17 +23,6 @@ import kusto from '../images/profile_kusto.jpg';
 import pencil from '../images/profile_pencil.svg';
 import plus from '../images/profile_plus.svg';
 
-const whoIsTheGoat = [
-    // меняем исходные пути на переменные
-    { name: 'headerLogo', image: headerLogo },
-    { name: 'basket', image: basket },
-    { name: 'like', image: like },
-    { name: 'close_btn', image: close_btn },
-    { name: 'kusto', image: kusto },
-    { name: 'pencil', image: pencil },
-    { name: 'plus', image: plus },
-
-];
 import './index.css';
 
 //карточки
@@ -71,25 +64,24 @@ const defaultFormConfig = {
     inactiveButtonClass: 'form__button_disabled',
     inputErrorClass: 'popup__input_type_error',
 };
-
+function createCard(item) {
+    const card = new Card(item.link, item.name, cardTemplate, (src,alt)=>{
+        popupPhoto.open(src,alt);
+    });
+    return card.generateCard();
+}
 
 
 const cardList = new Section({
     items: initialCards, renderer: (item) => {
-        const card = new Card(item.link, item.name, cardTemplate, (src,alt)=>{
-            popupPhoto.open(src,alt);
-        });
-        return card.generateCard();
+        return createCard(item);
     }
 }, cardListSelector);
 
 
 
 function formCardSubmit(getInput) {
-    const card = new Card(getInput.image, getInput.title, cardTemplate, (src,alt)=>{
-        popupPhoto.open(src,alt);
-    });
-    const cardElement = card.generateCard();
+    const cardElement = createCard({name: getInput.title, link: getInput.image})
     cardList.addItem(cardElement);
 }
 
@@ -109,14 +101,17 @@ const userInfo = new UserInfo ({name:'.profile__title', job:'.profile__subtitle'
 
 function updatePopupData() { // забираем контент со страницы в попап длаем попап видимым
     const contentInfo = userInfo.getUserInfo();
-    popupInfoForm.open(contentInfo.name, contentInfo.job);
+    popupInfoForm.open();
+    nameInfo.value = contentInfo.name;
+    jobInfo.value = contentInfo.job;
     editPopupValidation.toggleButtonState();
+    editPopupValidation.resetValidation();
 }
 
 
 
-function formSubmitHandler() { // добовляем значения из попапа на страницу закрываем попап
-    userInfo.setUserInfo();
+function formSubmitHandler(getInput) { // добовляем значения из попапа на страницу закрываем попап
+    userInfo.setUserInfo(getInput.name, getInput.job);
     popupInfoForm.close();
 }
 
@@ -125,6 +120,7 @@ profileEditButton.addEventListener('click', updatePopupData);
 addCardButton.addEventListener('click', () => {
     popupCarForm.open()
     addPopupValidation.toggleButtonState();
+    addPopupValidation.resetValidation();
 });
 
 //подключение валидации

@@ -4,7 +4,7 @@ class PopupWithForm extends Popup {
     constructor(popupSelector, submitCallback) {
         super(popupSelector);
         this.submitCallback = submitCallback;
-        this.form = this._popupSelector.querySelector('.form');
+        this.form = this._popup.querySelector('.form');
 
     }
 
@@ -21,7 +21,7 @@ class PopupWithForm extends Popup {
     }
 
     _getInputValues() { // собирает данные с полей
-        const inputs = this._popupSelector.querySelectorAll('.form__input');
+        const inputs = this._popup.querySelectorAll('.form__input');
         const formData = {};
         inputs.forEach((input) => {
             formData[input.name] = input.value;
@@ -30,12 +30,6 @@ class PopupWithForm extends Popup {
         return formData;
     }
 
-    open(name, job) { // открывает попап и забирает данные со страницы
-        super.open();
-        document.querySelector('#name').value = name;
-        document.querySelector('#job').value = job;
-
-    }
 
     close() { // завравает попап очищает форму
         this.form.reset();

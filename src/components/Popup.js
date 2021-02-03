@@ -1,17 +1,20 @@
 class Popup {
     constructor(popupSelector) {
 
-        this._popupSelector = document.querySelector(popupSelector);
+        this._popup = document.querySelector(popupSelector);
+        this._handleEscClose = this._handleEscClose.bind(this);
     }
 
     open() { // открытие попапа
-        this._popupSelector.classList.add('popup_visible');
-        document.addEventListener('keydown', this._handleEscClose.bind(this));
+        this._popup.classList.add('popup_visible');
+       // document.addEventListener('keydown', this._handleEscClose.bind(this));
+        document.addEventListener('keydown', this._handleEscClose);
     }
 
     close() { // закрытие  попапа
-        this._popupSelector.classList.remove('popup_visible');
-        document.removeEventListener('keydown', this._handleEscClose.bind(this));
+        this._popup.classList.remove('popup_visible');
+        //document.removeEventListener('keydown', this._handleEscClose.bind(this));
+        document.removeEventListener('keydown', this._handleEscClose);
 
     }
 
@@ -22,9 +25,9 @@ class Popup {
     }
 
     setEventListeners() {
-        this._popupSelector.querySelector('.popup__close-button').addEventListener('click', this.close.bind(this));
+        this._popup.querySelector('.popup__close-button').addEventListener('click', this.close.bind(this));
 
-        this._popupSelector.addEventListener('click',  (evt) => { //закртие по оверлею 
+        this._popup.addEventListener('click',  (evt) => { //закртие по оверлею
             if (evt.target === evt.currentTarget) {
                 this.close();
             }
