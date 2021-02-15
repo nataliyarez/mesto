@@ -19,6 +19,7 @@ const formCardAvatar = document.querySelector('.form__button_avatar');
 
 
 const avatar = document.querySelector('.profile__image-wrapper');
+const avatarImage = document.querySelector('.profile__image');
 
 const nameInfo = document.querySelector('#name');
 const jobInfo = document.querySelector('#job');
@@ -131,12 +132,13 @@ function formSubmitHandler(getInput) { // добовляем значения и
 
 }
 function formAvatarHandler(getInput){
+
     formCardAvatar.textContent = 'Сохранение...';
 api.editAvatar(getInput.image).then(()=>{
     popupAvatar.close();
     formCardAvatar.textContent = 'Сохраненить';
 });
-   avatar.src = getInput.image;
+   avatarImage.src = getInput.image;
 
 }
 

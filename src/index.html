@@ -96,11 +96,13 @@
 </div>
 <div class="popup popup_delete">
     <div class="popup__window">
-        <button aria-label="закрыть" class="popup__close-button popup__close-button_delete" type="button"></button>
-        <h3 class="popup__text">Вы уверены?</h3>
-        <button class="form__button form__button_delete" type="button">
-            Да
-        </button>
+        <form class="form form_delete" name="form__delete" novalidate>
+            <button aria-label="закрыть" class="popup__close-button popup__close-button_delete" type="button"></button>
+            <h3 class="popup__text">Вы уверены?</h3>
+            <button class="form__button form__button_delete" type="button">
+                Да
+            </button>
+        </form>
     </div>
 </div>
 <template class="card-template" id="card-template">
