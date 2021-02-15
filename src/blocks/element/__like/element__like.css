@@ -1,7 +1,7 @@
 .element__like {
     width: 21px;
     height: 19px;
-    align-self: center;
+   /* align-self: center; */
     background-image: url(../../../images/elements_like.svg);
     background-color: transparent;
     border: none;
@@ -9,6 +9,7 @@
     box-sizing: content-box;
     outline: none;
     transition: opacity ease 600ms;
+    padding-right: 14px;
 }
 
 .element__like:hover {

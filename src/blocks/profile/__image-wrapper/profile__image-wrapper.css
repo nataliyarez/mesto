@@ -1,0 +1,14 @@
+.profile__image-wrapper {
+    position: relative;
+    transition: opacity ease 600ms;
+}
+
+.profile__image-wrapper:hover .profile__pencil {
+    visibility: visible;
+    cursor: pointer;
+}
+
+.profile__image-wrapper:hover .profile__image {
+    cursor: pointer;
+    opacity: 0.2;
+}

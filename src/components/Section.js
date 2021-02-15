@@ -7,6 +7,9 @@ class Section {
     }
 
     addItem(element) { // отрисовывает элементы
+        this._container.append(element);
+    }
+    addItemNew(element) {
         this._container.prepend(element);
     }
 
