@@ -8,7 +8,7 @@ class PopupDeleteCard  extends Popup{
 
     open(removeCallback) {
         super.open();
-        this.removeCallback =removeCallback;
+        this.removeCallback = removeCallback;
 
     }
     setEventListeners() {// удаляем карточку и закрываем попап
@@ -16,8 +16,15 @@ class PopupDeleteCard  extends Popup{
 
         this._popup.querySelector('.form__button_delete').addEventListener('click', (evt) => {
             evt.preventDefault();
-            this.removeCallback();
-            super.close();
+            this._popup.querySelector('.form__button_delete').textContent = 'Удаление...'
+            this.removeCallback()
+                .then(()=>{
+                    this.close();
+            })
+                .finally(()=>{
+                    this._popup.querySelector('.form__button_delete').textContent = 'Да'
+                })
+                //this.close();
 
         });
 

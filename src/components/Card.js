@@ -1,13 +1,15 @@
 import {Popup} from "./Popup";
-import {api} from '../components/Api.js'
+
 
 class Card {
-    constructor(link, name, likes, owner, id, cardTemplate, handleCardClick, handleBasketClick) {
+    constructor(link, name, likes, owner, cardId, api, cardTemplate, handleCardClick,  handleBasketClick, userId) {
         this._link = link;
         this._name = name;
         this._likes = likes;
         this._owner = owner;
-        this._id = id;
+        this._userId = userId;
+        this._cardId = cardId;
+        this._api = api;
         this._cardTemplate = cardTemplate;
         this.handleCardClick = handleCardClick;
         this.handleBasketClick = handleBasketClick;
@@ -30,7 +32,7 @@ class Card {
 
         this.basketButton = this._element.querySelector(`.button_type_basket`);
         this.basketButton.addEventListener('click', () => this.handleBasketClick(() => {
-            this._removeCard();
+            return this._removeCard();
         }));
 
         this._element.querySelector('.element__like').addEventListener('click', this._handleLikeIcon.bind(this));
@@ -52,7 +54,7 @@ class Card {
 
         this.like = this._element.querySelector('.element__like');
         const isLiked = this._likes.find(({_id}) => {
-            return _id === '35f6ebae748768e91241472c';
+            return _id === this._userId;
         })
         if (isLiked) {
             this.like.classList.add('element__like_active')
@@ -63,23 +65,35 @@ class Card {
     }
 
     _removeCard() { // удаление карточек
-        this._element.remove();
-        this._element = null;
-        api.deleteCard(this._id);
+       return  this._api.deleteCard(this._cardId)
+            .then(() => {
+                this._element.remove();
+                this._element = null;
+            })
+            .catch((err)=>{
+                console.log(err);
+            })
+
 
     }
 
     _handleLikeIcon(evt) {//переключаем класс лайк на анлайк
         const isLike = evt.target.classList.contains('element__like_active');
-        evt.target.classList.toggle('element__like_active');
-        api.likeCard(isLike, this._id);
-        if (isLike===false) {
-            this.numderLikes =  this.numderLikes + 1;
-            this._element.querySelector('.element__likes').textContent = this.numderLikes;
-        } else {
-            this.numderLikes =  this.numderLikes - 1;
-            this._element.querySelector('.element__likes').textContent = this.numderLikes;
-        }
+        this._api.likeCard(isLike, this._cardId)
+            .then(()=>{
+                evt.target.classList.toggle('element__like_active');
+                if (isLike===false) {
+                    this.numderLikes =  this.numderLikes + 1;
+                    this._element.querySelector('.element__likes').textContent = this.numderLikes;
+                } else {
+                    this.numderLikes =  this.numderLikes - 1;
+                    this._element.querySelector('.element__likes').textContent = this.numderLikes;
+                }
+            })
+            .catch((err)=>{
+                console.log(err);
+            })
+
 
     }
 
@@ -90,7 +104,7 @@ class Card {
 
     _handleBasketButton() {
 
-        if (this._owner === '35f6ebae748768e91241472c') {
+        if (this._owner === this._userId) {
             this.basketButton.classList.add('button_type_basket_visible')
         }
 
